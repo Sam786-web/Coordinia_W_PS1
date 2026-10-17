@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+python-dotenv
+openai
+httpx
+python-telegram-bot
+fpdf2

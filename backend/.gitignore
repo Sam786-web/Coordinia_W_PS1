@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.db
+.env
+.auth_secret
+.settings.json
+uploads/

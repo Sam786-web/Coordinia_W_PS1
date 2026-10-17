@@ -1,0 +1,21 @@
+# Secrets and local data (never commit)
+.env
+.env.*
+!.env.example
+*.db
+.auth_secret
+.settings.json
+uploads/
+
+# Dependencies and builds
+venv/
+node_modules/
+dist/
+__pycache__/
+*.pyc
+
+# Editor / OS
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
