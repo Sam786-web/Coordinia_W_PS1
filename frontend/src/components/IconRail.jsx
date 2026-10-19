@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import {
-  Building2, Crown, FileBarChart2, FileUp, Github, GraduationCap, Inbox, KeyRound, LayoutDashboard, LogOut, QrCode, RotateCcw,
-  Slack, Smartphone, UserCog, Users,
+  Building2, Crown, FileBarChart2, FileUp, Github, GraduationCap, Inbox, KeyRound, LayoutDashboard, LogOut, Moon, QrCode, RotateCcw,
+  Slack, Smartphone, Sun, UserCog, Users,
 } from 'lucide-react'
 import { Avatar, Logo, Spinner, Switch } from './ui'
 import { api } from '../lib/api'
 import { useAuth } from '../lib/auth'
+import { useTheme } from '../lib/skin'
 import { ICON, cx } from '../lib/utils'
 import { useToast } from './Toast'
 
@@ -241,6 +242,7 @@ function UserMenu({ state, autopilot, busy, onClose, onToggleAutopilot, onStrict
 
 export default function IconRail({ view, onView, onOpen, skin, ...menuProps }) {
   const auth = useAuth()
+  const { theme, toggleTheme } = useTheme()
   const [menu, setMenu] = useState(null) // 'projects' | 'user' | null
   return (
     <nav className="flex w-16 shrink-0 flex-col items-center justify-between py-5" aria-label="Main">
@@ -264,6 +266,11 @@ export default function IconRail({ view, onView, onOpen, skin, ...menuProps }) {
       </div>
 
       <div className="relative flex flex-col items-center gap-2">
+        <RailButton
+          icon={theme === 'dark' ? Sun : Moon}
+          label={theme === 'dark' ? 'Switch to Day mode' : 'Switch to Night mode'}
+          onClick={toggleTheme}
+        />
         <RailButton
           icon={skin === 'corporate' ? Building2 : GraduationCap}
           label={`${skin === 'corporate' ? 'Corporate' : 'College'} workspace: switch project`}

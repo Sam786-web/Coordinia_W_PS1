@@ -19,11 +19,13 @@
       rel="stylesheet"
     />
     <script>
-      // Restore the last workspace look (College = light, Corporate = dark) before first paint
+      // Restore the last workspace and its Day/Night theme before first paint (College defaults to day, Corporate to night)
       try {
-        if (localStorage.getItem('coordina-skin') === 'corporate') {
+        var skin = localStorage.getItem('coordina-skin') === 'corporate' ? 'corporate' : 'college'
+        var theme = localStorage.getItem('coordina-theme-' + skin) || (skin === 'corporate' ? 'dark' : 'light')
+        document.documentElement.dataset.skin = skin
+        if (theme === 'dark') {
           document.documentElement.classList.add('dark')
-          document.documentElement.dataset.skin = 'corporate'
           document.querySelector('meta[name=theme-color]').setAttribute('content', '#07080C')
         }
       } catch (e) {}
